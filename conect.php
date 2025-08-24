@@ -81,5 +81,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $whatsappMessage = urlencode($message);
     header("Location: https://wa.me/$whatsappNumber?text=$whatsappMessage");
     exit();
+    // this comment is add by me
 }
 ?>
