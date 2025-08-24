@@ -12,7 +12,7 @@ session_start();
   <!-- SEO Meta Tags -->
   <meta name="description" content="OSIRIS Tech Company offers world-class technology services, digital innovation, and cutting-edge solutions." />
   <meta name="keywords" content="OSIRIS Tech, Technology Company, IT Services, Software Development, Digital Solutions" />
-  <meta name="author" content="OSIRIS Tech Company" />
+  <meta name="author" content="OSIRIS Tech Company ltd" />
 
   <!-- Favicon -->
   <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
