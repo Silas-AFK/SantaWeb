@@ -257,7 +257,7 @@ if (isset($_GET['id'])) {
             <div>
                 <img src="joys.jpg" alt="Organization Logo" class="logo">
             </div>
-            <div class="title">Payment Voucher</div>
+            <div class="title">Payment Voucher For school</div>
             <div>
                 <div><strong>Voucher No.:</strong> <?= htmlspecialchars($voucher['payment_voucher_no']) ?></div>
                 <div><strong>Date:</strong> <?= date('d M Y', strtotime($voucher['date'])) ?></div>
