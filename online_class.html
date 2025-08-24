@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Online Classes | SMCC Santa</title>
+
+  <!-- SEO & Icons -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    /* Header */
+    header.header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #2e86de;
+      padding: 10px 20px;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header .logo a img {
+      height: 40px;
+      border-radius: 8px;
+    }
+
+    nav.nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav.nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav.nav-links a:hover {
+      color: #a8c7ff;
+    }
+
+    .hamburger {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      user-select: none;
+      color: white;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 250px;
+      height: 100%;
+      background: #2e86de;
+      padding-top: 60px;
+      z-index: 1100;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.open {
+      transform: translateX(0);
+    }
+
+    .sidebar a {
+      display: block;
+      color: white;
+      padding: 12px 20px;
+      font-weight: bold;
+      border-bottom: 1px solid #3d9bff;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background: #1e66c0;
+    }
+
+    .sidebar .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* === Online Class Section === */
+    .online-class-section {
+      background-color: #ffffff;
+      padding: 60px 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .online-class-text {
+      flex: 1 1 300px;
+      max-width: 500px;
+      padding: 20px;
+    }
+
+    .online-class-text h2 {
+      color: #2e86de;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .online-class-text p {
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .online-class-text a.book-now {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #2e86de;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .online-class-text a.book-now:hover {
+      background-color: #1c5ca8;
+    }
+
+    .online-class-image {
+      flex: 1 1 300px;
+      max-width: 500px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .online-class-image img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+
+    /* Footer */
+    footer.footer {
+      background: #2e86de;
+      color: white;
+      text-align: center;
+      padding: 15px 20px;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .social-icons {
+      margin-top: 8px;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 10px;
+      font-size: 20px;
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #a8c7ff;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav.nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: block;
+      }
+
+      .online-class-section {
+        flex-direction: column;
+        padding: 30px 15px;
+      }
+
+      .online-class-text, .online-class-image {
+        max-width: 100%;
+        padding: 15px 0;
+      }
+
+      .online-class-text h2 {
+        font-size: 24px;
+      }
+    }
+    /* Admission Logo */
+    .admission-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto 0 auto;
+      animation: slide-in 1s ease-out;
+    }
+
+    .admission-logo img {
+      width: 120px;
+      height: auto;
+      border-radius: 12px;
+      animation: logo-fade 1s ease-out;
+    }
+
+    @keyframes slide-in {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes logo-fade {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Responsive logo */
+    @media (max-width: 600px) {
+      .admission-logo img {
+        width: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header / Navbar -->
+  <header class="header">
+    <div class="logo">
+      <a href="index.html">
+        <img src="joys.jpg" alt="SMCC Santa Logo">
+      </a>
+    </div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="admission.html">Admission</a>
+      <a href="news.php">News</a>
+       <a href="https://www.vivasoftonline.com">Log In</a>
+    </nav>
+    <div class="hamburger" onclick="toggleSidebar()" tabindex="0" role="button" aria-label="Toggle menu">☰</div>
+  </header>
+
+  <!-- Sidebar for mobile -->
+  <div id="sidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+    <a href="index.html">Home</a>
+    <a href="admission.html">Admission</a>
+    <a href="news.php">News</a>
+    <a href="https://www.vivasoftonline.com">Log In</a>
+  </div>
+ <!-- Admission Logo -->
+ <div class="admission-logo">
+  <img src="joys.jpg" alt="Osiris">
+</div>
+  <!-- Online Classes Section -->
+  <section class="online-class-section">
+    <div class="online-class-text">
+      <h2>Join Our Online Classes</h2>
+      <p>Can't make it to campus? No problem. SMCC Santa offers interactive online classes in General Education, Commercial and Technical subjects. Learn from the comfort of your home with our dedicated staff and digital resources.</p>
+      <p>To book a session, contact us directly via WhatsApp and we'll guide you step-by-step.</p>
+      <a href="https://wa.me/237653625962?text=Hello%20SMCC%20Santa%2C%20I%20would%20like%20to%20book%20an%20online%20class." class="book-now" target="_blank">
+        <i class="fab fa-whatsapp"></i> Book via WhatsApp
+      </a>
+    </div>
+    <div class="online-class-image">
+      <img src="class.jpg" alt="Online Classes Image">
+    </div>
+  </section>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-content">
+      <p>© 2025 SMCC Santa. All Rights Reserved.</p>
+      <p>Powered By <span style="color: black; opacity: 80%; ">OSIRIS</span> Tech</p>
+      <div class="social-icons">
+        <a href="https://wa.me/237676763842" target="_blank" title="Chat with us on WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+       
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+
+    function closeSidebar() {
+      document.getElementById('sidebar').classList.remove('open');
+    }
+
+    // Accessibility: toggle on keyboard
+    document.querySelector('.hamburger').addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        toggleSidebar();
+      }
+    });
+  </script>
+
+</body>
+</html>

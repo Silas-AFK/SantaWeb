@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Admission | SMCC Santa</title>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:image" content="https://yourwebsite.com/images/preview-image.jpg">
+  <meta property="og:url" content="https://yourwebsite.com/">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+  <!-- Fonts / Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* --- Navbar and General Styles --- */
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      padding: 0;
+      margin: 0;
+    }
+
+    /* Header/Nav Bar from OSIRIS Tech */
+    .header {
+      background-color: #00050a;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .header .logo img.pic {
+      height: 40px;
+      border-radius: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      font-size: 24px;
+      user-select: none;
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: #00050a;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        padding: 10px 0;
+        z-index: 1001;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      background-color: #00050a;
+      padding-top: 60px;
+      z-index: 1002;
+      overflow-y: auto;
+    }
+
+    .sidebar a {
+      display: block;
+      padding: 15px 20px;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .sidebar a:hover {
+      background-color: #111;
+    }
+
+    .closebtn {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 30px;
+      cursor: pointer;
+      color: white;
+    }
+
+    /* Admission Form Styles from your original */
+
+    .admissionContainer {
+      max-width: 900px;
+      margin: 40px auto 60px auto;
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 1;
+      position: relative;
+    }
+
+    .admissionContainer h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    form > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    form > div > div {
+      flex: 1 1 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, select {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    input[type="file"] {
+      padding: 5px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #00060c;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #090a0a;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    a {
+      color: #0b0b0c;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      form > div {
+        flex-direction: column;
+      }
+    }
+
+    /* Admission Logo */
+    .admission-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 20px auto 0 auto;
+      animation: slide-in 1s ease-out;
+    }
+
+    .admission-logo img {
+      width: 120px;
+      height: auto;
+      border-radius: 12px;
+      animation: logo-fade 1s ease-out;
+    }
+
+    @keyframes slide-in {
+      from {
+        transform: translateX(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes logo-fade {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    /* Responsive logo */
+    @media (max-width: 600px) {
+      .admission-logo img {
+        width: 80px;
+      }
+    }
+
+    /* Footer */
+    .footer {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 15px 0;
+      margin-top: 40px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .footer-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .social-icons {
+      margin-top: 10px;
+    }
+
+    .social-icons a {
+      color: white;
+      margin: 0 8px;
+      font-size: 24px;
+      transition: color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #2e86de;
+    }
+    .form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.form-column {
+  flex: 1 1 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (max-width: 600px) {
+  .form-column {
+    flex: 1 1 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="logo">
+      <a href="https://wa.me/237653625962" target="_blank" aria-label="WhatsApp Link">
+        <img src="joys.jpg" alt="OSIRIS Tech" class="pic">
+      </a>
+      <strong>SMCC Santa</strong>
+    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="admission.html">Admission</a>
+      <a href="https://www.vivasoftonline.com">Log In</a>
+      <a href="https://wa.me/237653625962">Contact</a>
+    </nav>
+    <div class="hamburger" onclick="toggleSidebar()">☰</div>
+  </header>
+
+  <!-- Sidebar for mobile -->
+  <div id="sidebar" class="sidebar" aria-hidden="true">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()" aria-label="Close Menu">×</a>
+    <a href="index.html">Home</a>
+    <a href="admission.html">Admission</a>
+    <a href="https://www.vivasoftonline.com">Log In</a>
+    <a href="https://wa.me/237653625962">Contact</a>
+  </div>
+
+  <!-- Admission Logo -->
+ <div class="admission-logo">
+  <img src="joys.jpg" alt="Osiris">
+</div>
+
+<div id="admissions" class="admissionContainer">
+  <h2>Admissions</h2>
+  <form action="conect.php" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+      <!-- Left Column -->
+      <div class="form-column">
+        <label >Full Name</label>
+        <input name="fullName" placeholder="Enter student full names" required />
+        
+        <label>Date of Birth</label>
+        <input name="dob" type="date" required />
+        <label >Place Of Birth</label>
+        <input name="placeOfBirth" placeholder="Enter place of Birth" required />
+        <label >Residence</label>
+        <input name="residence" placeholder="Enter student Address" required />
+        <label>Sex</label>
+<select name="sex" required>
+  <option value="" disabled selected>Select Gender</option>
+  <option value="Male">Male</option>
+  <option value="Female">Female</option>
+</select>
+
+        <label >Father's Name</label>
+        <input name="fatherName" placeholder="Enter father's Name" required />
+        <label >Father's phone number </label>
+        <input name="fatherPhone" placeholder="Enter father's Phone Number" required />
+        <label >Father's Residence</label>
+        <input name="fatherResidence" placeholder="Enter father's Address" required />
+      </div>
+
+      <!-- Right Column -->
+      <div class="form-column">
+        <label >Mother's Name</label>
+        <input name="motherName" placeholder="Enter mother's Name" required />
+        <label >Mother's Phone Number</label>
+        <input name="motherPhone" placeholder="Enter mother's Phone Number" required />
+        <label >Mother's Residence</label>
+        <input name="motherResidence" placeholder="Enter mother's Address" required />
+        <label >Guardian's Name</label>
+        <input name="guardianName" placeholder="Enter guardian's Name" required />
+        <label >Guardian's or student Phone Number</label>
+        <input name="guardianPhone" placeholder="Enter guardian's or student  Phone Number" required />
+        Guardian's Residence
+        <input name="guardianResidence" placeholder="Enter guardian's Residence" required />
+
+        <label> Add Passport Photo When you get to whatsapp </label>
+        <input name="photo" type="file" accept="image/*"  />
+
+        <select name="classLevel" required>
+          <option disabled selected>Select Class</option>
+          <option>Form 1 - General</option>
+          <option>Form 1 - Technical</option>
+          <option>Form 2 - General</option>
+          <option>Form 2 - Technical</option>
+          <option>Form 3 - General</option>
+          <option>Form 3 - Technical</option>
+          <option>Form 4 - General</option>
+          <option>Form 4 - Technical</option>
+          <option>Form 5 - General</option>
+          <option>Form 5 - Technical</option>
+          <option>Lower Sixth - General</option>
+          <option>Lower Sixth - Technical</option>
+          <option>Upper Sixth - General</option>
+          <option>Upper Sixth - Technical</option>
+        </select>
+        <label >Write down account Password When you get to whatsapp</label>
+        <input name="password " type="password" placeholder="Enter account Password" />
+      </div>
+    </div>
+    <button type="submit">Submit Admission</button>
+     <p>Or submit all your information to the Mail<a href="mailto:smcc.gtc@gmail.com" style="color: brown;">smcc.gtc@gmail.com</a> </p>
+     <p>WhatsApp<a href="https://wa.me/237653625962"  style="color:green;">(237)653625962</a></p>
+    <p>Already have an account? <a href="https://www.vivasoftonline.com" style="color: blue;">Log In</a></p>
+  </form>
+</div>
+
+
+ 
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="footer-content">
+      <p>© 2025 SMCC Santa. All Rights Reserved.</p>
+      <p>Powered By <span style="color: goldenrod; opacity: 80%; ">OSIRIS</span> Tech</p>
+      <div class="social-icons">
+        <a href="https://wa.me/237676763842" target="_blank" title="Chat with us on WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+       
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      const isHidden = sidebar.getAttribute('aria-hidden') === 'true';
+      if (isHidden) {
+        sidebar.style.display = 'block';
+        sidebar.setAttribute('aria-hidden', 'false');
+      } else {
+        sidebar.style.display = 'none';
+        sidebar.setAttribute('aria-hidden', 'true');
+      }
+    }
+
+    function closeSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.style.display = 'none';
+      sidebar.setAttribute('aria-hidden', 'true');
+    }
+
+    // Optional: close sidebar when clicking outside it on mobile
+    window.addEventListener('click', function(e) {
+      const sidebar = document.getElementById('sidebar');
+      if (!sidebar.contains(e.target) && e.target !== document.querySelector('.hamburger')) {
+        closeSidebar();
+      }
+    });
+  </script>
+</body>
+</html>
